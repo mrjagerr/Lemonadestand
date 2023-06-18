@@ -37,12 +37,11 @@ namespace LemonadeStand
         {
             get
             {
-
+                
                 return  random.Next(55, 98); 
 
             }
-            set { 
-            }
+            
         }
         public List<string> WeatherConditions
 

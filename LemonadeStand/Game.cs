@@ -51,14 +51,26 @@ namespace LemonadeStand
         {
             //[8:21 PM] 2.1 Display the forecast prediction
             Day day = new Day();
-            
+            Console.WriteLine($"It is currently Day{day.DayCounter}.");
+
+        }
+        public void  PlayerInventory()
+        {
+            Player player1 = new Player();
+            Inventory inventory = new Inventory();
+            player1.inventory = inventory;
+            Console.WriteLine($" You currently have {player1.wallet.Money} $");
+            Console.WriteLine($" You currently have {player1.inventory.lemons.Count} lemons.");
+            Console.WriteLine($" You currently have {player1.inventory.sugarCubes.Count} sugar cubes.");
+            Console.WriteLine($" You currently have {player1.inventory.iceCubes.Count} ice cubes.");
+            Console.WriteLine($" You currently have {player1.inventory.cups.Count} cups.");
         }
         public void RunGame()
         {
 
             WelcomeMessage();
-            
-           DailyWeather();
+            DailyWeather();
+            PlayerInventory();
         }
 
 

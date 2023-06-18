@@ -9,23 +9,36 @@ namespace LemonadeStand
 {
     internal class Day
     {
-       public Day() {
 
-           Weather weather = new Weather();
+        Random random;
+        public int dayCounter;
+        Weather Weather = new Weather();
+
+        public Day()
+        {
+
+            dayCounter = 0;
+
             
-            {
-                Console.WriteLine(weather.conditions);
-            }
-           
-            Console.WriteLine(weather.realConditions);
-
-
-
-
-
 
 
         }
 
+        public int DayCounter
+        {
+            get
+            {
+                return ++dayCounter;
+            }
+
+        }
+
+
+
+
     }
+
+
+
 }
+
