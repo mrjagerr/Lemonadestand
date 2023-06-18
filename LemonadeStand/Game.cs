@@ -12,7 +12,7 @@ namespace LemonadeStand
     internal class Game
     {
         //[8:20 PM] step2 Start first day
-        //[8:21 PM] 2.1 Display the forecast prediction
+        
         //[8:21 PM] 2.2 Display the player's inventory.
         //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
         //[8:21 PM] 2.4  Allow player to edit the recipe for more of each item (edited)
@@ -26,8 +26,8 @@ namespace LemonadeStand
         //[8:29 PM] step 4 Repeat of 7 times with for each loop
         //[8:29 PM] //for each day do this
 
-        public Player playerOne;
-        public Player playerTwo;
+       
+       
 
 
 
@@ -47,11 +47,18 @@ namespace LemonadeStand
                 "The weather, along it the pricing of your lemonade, will affect you succsess.\r\n" +
                 "Can you bring home the bacon!");
         }
+        public void DailyWeather()
+        {
+            //[8:21 PM] 2.1 Display the forecast prediction
+            Day day = new Day();
+            
+        }
         public void RunGame()
         {
-           
+
             WelcomeMessage();
             
+           DailyWeather();
         }
 
 
