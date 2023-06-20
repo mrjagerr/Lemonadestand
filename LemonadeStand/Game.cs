@@ -11,6 +11,7 @@ namespace LemonadeStand
 {
     internal class Game
     {
+        Player player1 =new Player();
         //[8:20 PM] step2 Start first day
         
         //[8:21 PM] 2.2 Display the player's inventory.
@@ -52,11 +53,12 @@ namespace LemonadeStand
             //[8:21 PM] 2.1 Display the forecast prediction
             Day day = new Day();
             Console.WriteLine($"It is currently Day{day.DayCounter}.");
+            
 
         }
         public void  PlayerInventory()
         {
-            Player player1 = new Player();
+            
             Inventory inventory = new Inventory();
             player1.inventory = inventory;
             Console.WriteLine($" You currently have {player1.wallet.Money} $");
@@ -65,12 +67,65 @@ namespace LemonadeStand
             Console.WriteLine($" You currently have {player1.inventory.iceCubes.Count} ice cubes.");
             Console.WriteLine($" You currently have {player1.inventory.cups.Count} cups.");
         }
+
+        public void PurchaseIngrediants() 
+        {
+            Store store = new Store();
+          
+            store.SellCups(player1);
+            store.SellIceCubes(player1);
+            store.SellLemons(player1);
+            store.SellSugarCubes(player1);
+     
+        }
+        public void LemonadeRecipe()
+        {
+            Recipe  recipe1 = new Recipe();
+            player1.recipe= recipe1;
+            recipe1.DisplayRecipe();
+
+            Console.WriteLine("Would you like change the Lemonade Recipe. Y/N ");
+            string response = Console.ReadLine().ToUpper();
+            if (response == "Y")
+            {
+                Console.WriteLine("How many lemons would you like to use?");
+                recipe1.numberOfLemons = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("How many sugarcubes would you like to use?");
+                recipe1.numberOfSugarCubes = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("How many icecubes would you like to use?");
+                recipe1.numberOfIceCubes = Convert.ToInt32(Console.ReadLine());
+                
+
+
+            }
+            else if (Console.ReadLine() == "N")
+            {
+                return;
+            }
+
+
+        }
+       
+
+
+
+
+
+
+        
+
+
         public void RunGame()
         {
 
             WelcomeMessage();
+            
             DailyWeather();
             PlayerInventory();
+            PurchaseIngrediants();
+            //PlayerInventory();
+            LemonadeRecipe();
+            
         }
 
 

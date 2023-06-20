@@ -12,14 +12,19 @@ namespace LemonadeStand
 
         Random random;
         public int dayCounter;
-        Weather Weather = new Weather();
-
+        public Weather Weather = new Weather();
+        public  Customer Customer = new Customer();
+        public Store Store = new Store();
         public Day()
         {
+            this.random = new Random();
+            this.Weather = new Weather();
+            Customers = new Customer();
+            foreach (Customer customer in customers)
+            {
 
-            dayCounter = 0;
+            }
 
-            
 
 
         }
