@@ -11,9 +11,12 @@ namespace LemonadeStand
 {
     internal class Game
     {
-        Player player1 =new Player();
+        Player player1 = new Player();
+        Inventory inventory = new Inventory();
+        Recipe recipe = new Recipe();
+
         //[8:20 PM] step2 Start first day
-        
+
         //[8:21 PM] 2.2 Display the player's inventory.
         //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
         //[8:21 PM] 2.4  Allow player to edit the recipe for more of each item (edited)
@@ -27,8 +30,8 @@ namespace LemonadeStand
         //[8:29 PM] step 4 Repeat of 7 times with for each loop
         //[8:29 PM] //for each day do this
 
-       
-       
+
+
 
 
 
@@ -53,14 +56,15 @@ namespace LemonadeStand
             //[8:21 PM] 2.1 Display the forecast prediction
             Day day = new Day();
             Console.WriteLine($"It is currently Day{day.DayCounter}.");
-            
+
 
         }
-        public void  PlayerInventory()
+
+        public void PlayerInventory()
         {
-            
-            Inventory inventory = new Inventory();
-            player1.inventory = inventory;
+
+
+
             Console.WriteLine($" You currently have {player1.wallet.Money} $");
             Console.WriteLine($" You currently have {player1.inventory.lemons.Count} lemons.");
             Console.WriteLine($" You currently have {player1.inventory.sugarCubes.Count} sugar cubes.");
@@ -68,33 +72,33 @@ namespace LemonadeStand
             Console.WriteLine($" You currently have {player1.inventory.cups.Count} cups.");
         }
 
-        public void PurchaseIngrediants() 
+        public void PurchaseIngrediants()
         {
             Store store = new Store();
-          
+
             store.SellCups(player1);
             store.SellIceCubes(player1);
             store.SellLemons(player1);
             store.SellSugarCubes(player1);
-     
+
         }
         public void LemonadeRecipe()
         {
-            Recipe  recipe1 = new Recipe();
-            player1.recipe= recipe1;
-            recipe1.DisplayRecipe();
+
+
+            recipe.DisplayRecipe();
 
             Console.WriteLine("Would you like change the Lemonade Recipe. Y/N ");
             string response = Console.ReadLine().ToUpper();
             if (response == "Y")
             {
                 Console.WriteLine("How many lemons would you like to use?");
-                recipe1.numberOfLemons = Convert.ToInt32(Console.ReadLine());
+                recipe.numberOfLemons = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("How many sugarcubes would you like to use?");
-                recipe1.numberOfSugarCubes = Convert.ToInt32(Console.ReadLine());
+                recipe.numberOfSugarCubes = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("How many icecubes would you like to use?");
-                recipe1.numberOfIceCubes = Convert.ToInt32(Console.ReadLine());
-                
+                recipe.numberOfIceCubes = Convert.ToInt32(Console.ReadLine());
+
 
 
             }
@@ -105,50 +109,71 @@ namespace LemonadeStand
 
 
         }
-       
+
+        public void Pitchers()
+        {
+            int numberOfPitchers = UserInterface.GetNumberOfPitchers();
+
+            for (int i = 0; i == numberOfPitchers; i++)
+            {
+                inventory.iceCubes.RemoveAt(recipe.numberOfIceCubes);
+                inventory.lemons.RemoveAt(recipe.numberOfLemons);
+                inventory.sugarCubes.RemoveAt(recipe.numberOfSugarCubes);
+
+
+
+            }
+
+
+
+
+
+        }
 
 
 
 
 
 
-        
 
 
         public void RunGame()
         {
 
             WelcomeMessage();
-            
-            DailyWeather();
-            PlayerInventory();
-            PurchaseIngrediants();
-            //PlayerInventory();
-            LemonadeRecipe();
-            
+            for (int i = 0; i < 8; i++)
+            {
+
+                DailyWeather();
+                PlayerInventory();
+                PurchaseIngrediants();
+                //PlayerInventory();
+                LemonadeRecipe();
+                Pitchers();
+                PlayerInventory();
+            }
+
+
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
 
 
 

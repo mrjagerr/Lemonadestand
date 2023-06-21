@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Channels;
@@ -18,17 +19,19 @@ namespace LemonadeStand
         public string predictiedForcast;
         public string actualForcast;
         public string realConditions;
+        public string possibleForcast;
         public Weather()
 
         { 
 
             random = new Random();  
-            weatherconditions = new List<string> { "Mostly sunny", "mostly cloudy", "Sunny", "Cloudy", "Rainy", "Partly cloudly", "Sunny and rainy" };
+            weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
             predictiedForcast = weatherconditions[random.Next(0,weatherconditions.Count)];
             actualForcast = weatherconditions[random.Next(0, weatherconditions.Count)];
             temperature = Temperature;
             conditions = Conditions;
             realConditions = RealConditons;
+            possibleForcast = weatherconditions[random.Next(0, weatherconditions.Count)];
         }
 
 

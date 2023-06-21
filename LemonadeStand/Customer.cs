@@ -8,42 +8,56 @@ namespace LemonadeStand
 {
     internal class Customer
     {
-        Random random;
-        Weather weather;
-        private string tasteProfile;
-        private string climateEnjoyemnet;
+        Random random = new Random();
         private int temperatureEnjoyment;
-        private int priceOfPurchase;
+        private double priceOfPurchase;
 
         public Customer() 
         {
-        this.random = new Random();
-        tasteProfile = string.Empty;
-        climateEnjoyemnet = string.Empty;
-        temperatureEnjoyment = 0;
-        priceOfPurchase = 0;
-            
-        }   
+            Random random = new Random();
 
-        public string TasteProfile
+
+            temperatureEnjoyment = TemperatureEnjoyment;
+        priceOfPurchase = PriceOfPurchase;
+            
+        }
+        public double PriceOfPurchase
         {
             get
             {
-                return tasteProfile;
-            }
-            set
-            {
-                if(weather.temperature < 60)
-                {
+                
+                return random.Next(0, 4);
 
-                }
-            
             }
+           
+        }
+        
+        public int TemperatureEnjoyment
+        {
+            get
+            {
+
+                return random.Next(55, 98);
+
+            }
+
         }
 
         
+        // public void Purchase(Weather weather,Inventory inventory)
+        //{
+        //  if (temperatureEnjoyment <= weather.temperature) 
+        //    {
+        //        Console.WriteLine("Customer bought lemonade.");
+        //        inventory.cups.RemoveAt(1);
+
+        //    }
+        //}
+            
 
 
-
+        
+        
+        
     }
 }
