@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,14 +15,13 @@ namespace LemonadeStand
         Player player1 = new Player();
         Inventory inventory = new Inventory();
         Recipe recipe = new Recipe();
-
+        Day day;
         //[8:20 PM] step2 Start first day
 
-        //[8:21 PM] 2.2 Display the player's inventory.
-        //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
-        //[8:21 PM] 2.4  Allow player to edit the recipe for more of each item (edited)
+       
+        
         //[8:23 PM] 2.5 Display actual forecast for the day
-        //[8:24 PM] 2.6 State the number of cups that a pitcher pours.
+       
         //[8:25 PM] 2.7 Select price per cup.
         //[8:25 PM] 2.8 State the weather and temp to signify the weather of the day
         //[8:26 PM] 2.9 Customer buy loop on a random purchase
@@ -51,19 +51,20 @@ namespace LemonadeStand
                 "The weather, along it the pricing of your lemonade, will affect you succsess.\r\n" +
                 "Can you bring home the bacon!");
         }
-        public void DailyWeather()
+        public void PredictedWeather()
         {
             //[8:21 PM] 2.1 Display the forecast prediction
             Day day = new Day();
-            Console.WriteLine($"It is currently Day{day.DayCounter}.");
-
+            
+            Console.WriteLine($"It is currently Day{day.Daycounter}.");
+            
 
         }
-
+        
         public void PlayerInventory()
         {
 
-
+            //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
 
             Console.WriteLine($" You currently have {player1.wallet.Money} $");
             Console.WriteLine($" You currently have {player1.inventory.lemons.Count} lemons.");
@@ -74,6 +75,7 @@ namespace LemonadeStand
 
         public void PurchaseIngrediants()
         {
+            //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
             Store store = new Store();
 
             store.SellCups(player1);
@@ -84,8 +86,8 @@ namespace LemonadeStand
         }
         public void LemonadeRecipe()
         {
-
-
+           
+            //[8:21 PM] 2.4  Allow player to edit the recipe for more of each item (edited)
             recipe.DisplayRecipe();
 
             Console.WriteLine("Would you like change the Lemonade Recipe. Y/N ");
@@ -112,45 +114,56 @@ namespace LemonadeStand
 
         public void Pitchers()
         {
+            //[8:24 PM] 2.6 State the number of cups that a pitcher pours.
             int numberOfPitchers = UserInterface.GetNumberOfPitchers();
 
             for (int i = 0; i == numberOfPitchers; i++)
             {
                 inventory.iceCubes.RemoveAt(recipe.numberOfIceCubes);
+                Console.WriteLine( inventory.iceCubes);
                 inventory.lemons.RemoveAt(recipe.numberOfLemons);
                 inventory.sugarCubes.RemoveAt(recipe.numberOfSugarCubes);
+                
 
 
+            }
 
+        }
+        public void Customers()
+
+        {
+           for (int i = 0; i==day.NumberOfCustomersPerDay; i--)
+            {
+                Customer customer =new Customer();
+                customer.Purchase();
             }
 
 
 
 
 
-        }
 
 
 
 
 
-
-
-
+            }
         public void RunGame()
         {
 
             WelcomeMessage();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
+                
+                PredictedWeather();
 
-                DailyWeather();
                 PlayerInventory();
                 PurchaseIngrediants();
                 //PlayerInventory();
                 LemonadeRecipe();
                 Pitchers();
                 PlayerInventory();
+                Customers();
             }
 
 

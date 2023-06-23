@@ -11,118 +11,74 @@ namespace LemonadeStand
     {
 
         Random random;
-        private int dayCounter;
+         private static int dayCounter=0;
         public Weather Weather = new Weather();
         public Store Store = new Store();
         public List<Customer> Customers = new List<Customer>();
         private int numberOfCustomersPerDay;
-
+        
         public Day()
         {
             this.random = new Random();
             this.Weather = new Weather();
             this.Customers = new List<Customer>();
+            numberOfCustomersPerDay = NumberOfCustomersPerDay;
             
             
-
-
         }
-        
-        public int DayCounter
+        public int Daycounter
         {
             get
             {
-
-
-                return dayCounter++;
-            }
-            
+                dayCounter++;
+                return dayCounter; }
 
         }
-        //public int NumberOfCustomersPerDay
-        //{
-        //    get
-        //    {
-        //        return this.numberOfCustomersPerDay;
-        //    }
-        //    set
-        //    {
-        //        int numberOfCustomers;
-        //        if( Weather.realConditions == "mostly sunny" ) 
-        //        { 
-        //            for( int i = 0; i == 50; i++)
-        //            {
-        //               Customer customer = new Customer();
-        //                customer.Purchase();
-
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-        //        }
-        //        else if (Weather.realConditions == "mostly cloudy")
-        //            {
-        //                for (int i = 0; i == 30; i++)
-        //                {
-        //                    Customer customer = new Customer();
-        //                     customer.Purchase();
-
-        //            }
-        //                this.numberOfCustomersPerDay = value;
-        //            }
-        //        else if (Weather.realConditions == "sunny")
-        //        {
-        //            for (int i = 0; i == 60; i++)
-        //            {
-        //                Customer customer = new Customer();
-        //                customer.Purchase();
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-
-        //        }
-        //        else if (Weather.realConditions == "cloudy")
-        //        {
-        //            for (int i = 0; i == 25; i++)
-        //            {
-        //                Customer customer = new Customer();
-        //                customer.Purchase();
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-        //        }
-        //        else if (Weather.realConditions == "rainy")
-        //        {
-        //            for (int i = 0; i == 15; i++)
-        //            {
-        //                Customer customer = new Customer();
-        //                customer.Purchase();
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-        //        }
-        //        else if (Weather.realConditions == "partly cloudly")
-        //        {
-        //            for (int i = 0; i == 35; i++)
-        //            {
-        //                Customer customer = new Customer();
-        //                customer.Purchase();
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-        //        }
-        //        else if (Weather.realConditions == "sunny and rainy")
-        //        {
-        //            for (int i = 0; i == 20; i++)
-        //            {
-        //                Customer customer = new Customer();
-        //                customer.Purchase();
-
-        //            }
-        //            this.numberOfCustomersPerDay = value;
-        //        }
+        
             
         
 
+                //weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
+
+            
+        public int NumberOfCustomersPerDay
+        {
+            get
+
+            {
+
+                switch (Weather.realConditions)
+                {
+                    case "mostly sunny":
+                        numberOfCustomersPerDay = 30;
+                        return numberOfCustomersPerDay;
+                    case "mostly cloudy":
+                        numberOfCustomersPerDay = 20;
+                        return numberOfCustomersPerDay;
+                    case "sunny":
+                        numberOfCustomersPerDay = 40;
+                        return numberOfCustomersPerDay;
+                    case "cloudy":
+                        numberOfCustomersPerDay = 25;
+                        return numberOfCustomersPerDay;
+                    case "rainy":
+                        numberOfCustomersPerDay = 10;
+                        return numberOfCustomersPerDay;
+                    case "partly cloudy":
+                        numberOfCustomersPerDay = 25;
+                        return numberOfCustomersPerDay;
+                    case "sunny and rainy":
+                        numberOfCustomersPerDay = 15;
+                        return numberOfCustomersPerDay;
 
 
+                }
+                return numberOfCustomersPerDay;
+            }
+           
+
+            
+        }
     }
-
-
-    
-    }
+ }
 

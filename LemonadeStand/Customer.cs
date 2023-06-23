@@ -8,6 +8,9 @@ namespace LemonadeStand
 {
     internal class Customer
     {
+        Player player;
+        Recipe recipe;
+        Weather weather;
         Random random = new Random();
         private int temperatureEnjoyment;
         private double priceOfPurchase;
@@ -17,7 +20,7 @@ namespace LemonadeStand
             Random random = new Random();
 
 
-            temperatureEnjoyment = TemperatureEnjoyment;
+        temperatureEnjoyment = TemperatureEnjoyment;
         priceOfPurchase = PriceOfPurchase;
             
         }
@@ -43,21 +46,27 @@ namespace LemonadeStand
 
         }
 
-        
-        // public void Purchase(Weather weather,Inventory inventory)
-        //{
-        //  if (temperatureEnjoyment <= weather.temperature) 
-        //    {
-        //        Console.WriteLine("Customer bought lemonade.");
-        //        inventory.cups.RemoveAt(1);
 
-        //    }
-        //}
-            
+        public void Purchase()
+        {
+           
+            if (recipe.price == priceOfPurchase || weather.temperature == TemperatureEnjoyment)
+            {
+                Console.WriteLine("Customer has purchased Lemonade");
+                
+            }
+            else if (recipe.price !=  priceOfPurchase|| weather.temperature < TemperatureEnjoyment)
+                {
+                Console.WriteLine("Customer walks by.");
+            }
+
+        }     
 
 
-        
-        
-        
+
+
+
+
+
     }
 }
