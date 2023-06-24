@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    internal class Day
+    internal  class Day
     {
 
         Random random;
-         private static int dayCounter=0;
+        private static int dayCounter=0;
         public Weather Weather = new Weather();
         public Store Store = new Store();
         public List<Customer> Customers = new List<Customer>();
@@ -41,13 +41,13 @@ namespace LemonadeStand
                 //weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
 
             
-        public int NumberOfCustomersPerDay
+        public  int NumberOfCustomersPerDay
         {
             get
 
             {
 
-                switch (Weather.realConditions)
+                switch (Weather.actualForcast)
                 {
                     case "mostly sunny":
                         numberOfCustomersPerDay = 30;

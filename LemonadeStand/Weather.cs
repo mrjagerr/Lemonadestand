@@ -19,7 +19,7 @@ namespace LemonadeStand
         public string predictiedForcast;
         public string actualForcast;
         public string realConditions;
-        public string possibleForcast;
+       
         public Weather()
 
         { 
@@ -31,7 +31,7 @@ namespace LemonadeStand
             temperature = Temperature;
             conditions = Conditions;
             realConditions = RealConditons;
-            possibleForcast = weatherconditions[random.Next(0, weatherconditions.Count)];
+            
         }
 
 

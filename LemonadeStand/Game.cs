@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.ConstrainedExecution;
@@ -13,9 +15,9 @@ namespace LemonadeStand
     internal class Game
     {
         Player player1 = new Player();
-        Inventory inventory = new Inventory();
-        Recipe recipe = new Recipe();
-        Day day;
+        
+        
+        
         //[8:20 PM] step2 Start first day
 
        
@@ -51,11 +53,11 @@ namespace LemonadeStand
                 "The weather, along it the pricing of your lemonade, will affect you succsess.\r\n" +
                 "Can you bring home the bacon!");
         }
-        public void PredictedWeather()
+        public void DayCreation()
         {
             //[8:21 PM] 2.1 Display the forecast prediction
             Day day = new Day();
-            
+           
             Console.WriteLine($"It is currently Day{day.Daycounter}.");
             
 
@@ -88,18 +90,18 @@ namespace LemonadeStand
         {
            
             //[8:21 PM] 2.4  Allow player to edit the recipe for more of each item (edited)
-            recipe.DisplayRecipe();
+           player1.recipe.DisplayRecipe();
 
             Console.WriteLine("Would you like change the Lemonade Recipe. Y/N ");
             string response = Console.ReadLine().ToUpper();
             if (response == "Y")
             {
                 Console.WriteLine("How many lemons would you like to use?");
-                recipe.numberOfLemons = Convert.ToInt32(Console.ReadLine());
+                player1.recipe.numberOfLemons = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("How many sugarcubes would you like to use?");
-                recipe.numberOfSugarCubes = Convert.ToInt32(Console.ReadLine());
+                player1.recipe.numberOfSugarCubes = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("How many icecubes would you like to use?");
-                recipe.numberOfIceCubes = Convert.ToInt32(Console.ReadLine());
+                player1.recipe.numberOfIceCubes = Convert.ToInt32(Console.ReadLine());
 
 
 
@@ -117,37 +119,37 @@ namespace LemonadeStand
             //[8:24 PM] 2.6 State the number of cups that a pitcher pours.
             int numberOfPitchers = UserInterface.GetNumberOfPitchers();
 
-            for (int i = 0; i == numberOfPitchers; i++)
-            {
-                inventory.iceCubes.RemoveAt(recipe.numberOfIceCubes);
-                Console.WriteLine( inventory.iceCubes);
-                inventory.lemons.RemoveAt(recipe.numberOfLemons);
-                inventory.sugarCubes.RemoveAt(recipe.numberOfSugarCubes);
+            while (numberOfPitchers != 0)
                 
+                {
+                    player1.inventory.iceCubes.RemoveRange(0, player1.recipe.numberOfIceCubes);
+                    player1.inventory.lemons.RemoveRange(0, player1.recipe.numberOfLemons);
+                    player1.inventory.sugarCubes.RemoveRange(0,player1.recipe.numberOfSugarCubes);
+                    numberOfPitchers--;
+                }
 
+
+            
+
+        }
+      
+
+        public void Customers()
+
+        {
+            Day day = new Day();
+
+
+            int customersPerDay = day.NumberOfCustomersPerDay;
+            while (customersPerDay != 0)
+            {
+               Customer customer = new Customer();
+                customer.Purchase();        
+                customersPerDay--;
 
             }
 
         }
-        public void Customers()
-
-        {
-           for (int i = 0; i==day.NumberOfCustomersPerDay; i--)
-            {
-                Customer customer =new Customer();
-                customer.Purchase();
-            }
-
-
-
-
-
-
-
-
-
-
-            }
         public void RunGame()
         {
 
@@ -155,14 +157,12 @@ namespace LemonadeStand
             for (int i = 0; i < 7; i++)
             {
                 
-                PredictedWeather();
-
+                DayCreation();
                 PlayerInventory();
                 PurchaseIngrediants();
                 //PlayerInventory();
                 LemonadeRecipe();
                 Pitchers();
-                PlayerInventory();
                 Customers();
             }
 
