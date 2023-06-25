@@ -13,7 +13,7 @@ namespace LemonadeStand
         public List<SugarCube> sugarCubes;
         public List<IceCube> iceCubes;
         public List<Cup> cups;
-
+        public List<Lemonade>  lemonades;
         // constructor (SPAWNER)
         public Inventory()
         {
@@ -21,10 +21,12 @@ namespace LemonadeStand
             sugarCubes = new List<SugarCube>();
             iceCubes = new List<IceCube>();
             cups = new List<Cup>();
+            lemonades= new List<Lemonade>();
             AddLemonsToInventory(20);
             AddSugarCubesToInventory(20);
             AddIceCubesToInventory(100);
             AddCupsToInventory(30);
+            AddLemonadeToInventory(0);
         }
 
         // member methods (CAN DO)
@@ -64,7 +66,17 @@ namespace LemonadeStand
             }
         }
 
-
-
+        public void AddLemonadeToInventory(int numberOfLemonades)
+        {
+            {
+                for (int i = 0; i < numberOfLemonades; i++)
+                {
+                    Lemonade lemonade = new Lemonade();
+                    lemonades.Add(lemonade);
+                }
+            }
+        }
     }
+
 }
+    

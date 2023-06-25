@@ -19,11 +19,12 @@ namespace LemonadeStand
         public string predictiedForcast;
         public string actualForcast;
         public string realConditions;
-       
+        public string currentDayWeather;
+        private string daysCondtion;
         public Weather()
 
-        { 
-
+        {
+            
             random = new Random();  
             weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
             predictiedForcast = weatherconditions[random.Next(0,weatherconditions.Count)];
@@ -31,6 +32,8 @@ namespace LemonadeStand
             temperature = Temperature;
             conditions = Conditions;
             realConditions = RealConditons;
+           
+           
             
         }
 
@@ -46,38 +49,26 @@ namespace LemonadeStand
             }
             
         }
-        public List<string> WeatherConditions
+       
 
-        {
-            get
-            {
-                return weatherconditions;
-            }
-            set
-            {
-
-
-                weatherconditions = value;
-
-            }
-
-
-        }
 
         public string Conditions
         {
             get {
 
-                return $"The weather of the day is {temperature} degrees and {predictiedForcast}.";
+                return $"The forcast of the day is {temperature} degrees and {predictiedForcast}.";
             }
             
           
         }
+        
         public string RealConditons
         {
             get
             {
-                return $"The weather of the day is actually {Temperature} degrees and {actualForcast}.";
+               
+                return $"The weather of the day is actually {temperature} degrees and {actualForcast}.";
+
             }
         }
        

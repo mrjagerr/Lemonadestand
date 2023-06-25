@@ -22,6 +22,7 @@ namespace LemonadeStand
             this.random = new Random();
             this.Weather = new Weather();
             this.Customers = new List<Customer>();
+           
             numberOfCustomersPerDay = NumberOfCustomersPerDay;
             
             

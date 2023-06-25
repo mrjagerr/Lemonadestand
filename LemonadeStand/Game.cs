@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net.Sockets;
 using System.Numerics;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
@@ -15,7 +16,7 @@ namespace LemonadeStand
     internal class Game
     {
         Player player1 = new Player();
-        
+        Day day = new Day();
         
         
         //[8:20 PM] step2 Start first day
@@ -29,7 +30,7 @@ namespace LemonadeStand
         //[8:26 PM] 2.9 Customer buy loop on a random purchase
         //[8:27 PM] 2.10 Finish first day with results of sales and number of cups sold. As well as the amount made that day.
         //[8:28 PM] step 3 Repeat of step 2.1-2.10 (edited)
-        //[8:29 PM] step 4 Repeat of 7 times with for each loop
+        
         //[8:29 PM] //for each day do this
 
 
@@ -56,10 +57,11 @@ namespace LemonadeStand
         public void DayCreation()
         {
             //[8:21 PM] 2.1 Display the forecast prediction
-            Day day = new Day();
-           
-            Console.WriteLine($"It is currently Day{day.Daycounter}.");
             
+            
+            Console.WriteLine($"It is currently Day{day.Daycounter}.");
+            Console.WriteLine(day.Weather.Conditions);
+
 
         }
         
@@ -125,6 +127,8 @@ namespace LemonadeStand
                     player1.inventory.iceCubes.RemoveRange(0, player1.recipe.numberOfIceCubes);
                     player1.inventory.lemons.RemoveRange(0, player1.recipe.numberOfLemons);
                     player1.inventory.sugarCubes.RemoveRange(0,player1.recipe.numberOfSugarCubes);
+                    player1.inventory.cups.RemoveRange(0,8);
+                    player1.inventory.AddLemonadeToInventory(8);
                     numberOfPitchers--;
                 }
 
@@ -133,26 +137,62 @@ namespace LemonadeStand
 
         }
       
-
-        public void Customers()
-
+        public void PriceChange()
         {
-            Day day = new Day();
-
-
-            int customersPerDay = day.NumberOfCustomersPerDay;
-            while (customersPerDay != 0)
+            Console.WriteLine("Would you like to change the price per cup of lemonade?Y/N");
+            string response = Console.ReadLine().ToUpper();
+            if (response == "Y")
             {
-               Customer customer = new Customer();
-                customer.Purchase();        
-                customersPerDay--;
+                Console.WriteLine("What would you like the new price to be?");
+                player1.recipe.price = Convert.ToDouble(Console.ReadLine());
+                
+
+               
 
             }
+            else if (Console.ReadLine() == "N")
+            {
+                return;
+            }
+        }
+
+        public void Customers()
+        {
+            Console.WriteLine(day.Weather.RealConditons);
+            int customersPerDay = day.NumberOfCustomersPerDay;
+            int numberOfLemonadePurchaseable = player1.inventory.lemonades.Count;
+
+            while (customersPerDay != 0 && numberOfLemonadePurchaseable != 0)
+            {
+                Customer customer = new Customer();
+                customer.Weather = day.Weather;
+                customer.RecipePrice = player1.recipe.price;
+                customer.Purchase();
+                if (customer.customerDecision == true)
+                {
+                    numberOfLemonadePurchaseable--;
+                    player1.wallet.AcceptMoney(player1.recipe.price);
+
+
+
+                }
+                    customersPerDay--;
+
+                
+            }
+        }
+        public void NewBalance()
+        {
+            Console.WriteLine($"You now have {player1.wallet.Money} in your wallet after todays sales.");
+            player1.inventory.lemonades = new List<Lemonade>();
+            day = new Day();
+            
 
         }
+
         public void RunGame()
         {
-
+            //[8:29 PM] step 4 Repeat of 7 times with for each loop
             WelcomeMessage();
             for (int i = 0; i < 7; i++)
             {
@@ -160,10 +200,11 @@ namespace LemonadeStand
                 DayCreation();
                 PlayerInventory();
                 PurchaseIngrediants();
-                //PlayerInventory();
                 LemonadeRecipe();
                 Pitchers();
+                PriceChange();
                 Customers();
+                NewBalance();
             }
 
 
