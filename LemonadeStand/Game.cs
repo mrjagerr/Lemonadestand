@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace LemonadeStand
 {
@@ -57,7 +58,7 @@ namespace LemonadeStand
         public void DayCreation()
         {
             //[8:21 PM] 2.1 Display the forecast prediction
-            
+            Day day = new Day();
             
             Console.WriteLine($"It is currently Day{day.Daycounter}.");
             Console.WriteLine(day.Weather.Conditions);
@@ -158,6 +159,7 @@ namespace LemonadeStand
 
         public void Customers()
         {
+            
             Console.WriteLine(day.Weather.RealConditons);
             int customersPerDay = day.NumberOfCustomersPerDay;
             int numberOfLemonadePurchaseable = player1.inventory.lemonades.Count;
@@ -186,7 +188,9 @@ namespace LemonadeStand
             Console.WriteLine($"You now have {player1.wallet.Money} in your wallet after todays sales.");
             player1.inventory.lemonades = new List<Lemonade>();
             day = new Day();
-            
+
+
+
 
         }
 

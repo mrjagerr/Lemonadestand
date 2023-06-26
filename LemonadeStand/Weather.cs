@@ -26,7 +26,7 @@ namespace LemonadeStand
         {
             
             random = new Random();  
-            weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
+            weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudy", "sunny and rainy" };
             predictiedForcast = weatherconditions[random.Next(0,weatherconditions.Count)];
             actualForcast = weatherconditions[random.Next(0, weatherconditions.Count)];
             temperature = Temperature;

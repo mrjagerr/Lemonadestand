@@ -85,19 +85,19 @@ namespace LemonadeStand
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "mostly cloudy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by"); 
                                 customerDecision = false;
@@ -109,55 +109,55 @@ namespace LemonadeStand
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                                 customerDecision = false;
                         }
                         return;
                     case "cloudy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "rainy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                                 customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                                 customerDecision = false;
                         }
                         return;
-                    case "partly cloudly":
-                        if (temperatureEnjoyment > weather.temperature)
+                    case "partly cloudy":
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase"); 
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "sunny and rainy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
@@ -176,19 +176,19 @@ namespace LemonadeStand
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by"); 
                             customerDecision = false;
                         }
                         return;
                     case "mostly cloudy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
@@ -200,55 +200,55 @@ namespace LemonadeStand
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "cloudy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "rainy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "partly cloudly":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
                         }
                         return;
                     case "sunny and rainy":
-                        if (temperatureEnjoyment > weather.temperature)
+                        if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
                             customerDecision = true;
                         }
-                        else if (temperatureEnjoyment < weather.temperature)
+                        else if (temperatureEnjoyment <= weather.temperature)
                         {
                             Console.WriteLine("Customer walks by");
                             customerDecision = false;
