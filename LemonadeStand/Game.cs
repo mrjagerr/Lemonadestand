@@ -24,13 +24,11 @@ namespace LemonadeStand
 
        
         
-        //[8:23 PM] 2.5 Display actual forecast for the day
        
-        //[8:25 PM] 2.7 Select price per cup.
-        //[8:25 PM] 2.8 State the weather and temp to signify the weather of the day
-        //[8:26 PM] 2.9 Customer buy loop on a random purchase
-        //[8:27 PM] 2.10 Finish first day with results of sales and number of cups sold. As well as the amount made that day.
-        //[8:28 PM] step 3 Repeat of step 2.1-2.10 (edited)
+       
+        
+        
+        
         
         //[8:29 PM] //for each day do this
 
@@ -58,6 +56,7 @@ namespace LemonadeStand
         public void DayCreation()
         {
             //[8:21 PM] 2.1 Display the forecast prediction
+            //[8:25 PM] 2.8 State the weather and temp to signify the weather of the day
             Day day = new Day();
             
             Console.WriteLine($"It is currently Day{day.Daycounter}.");
@@ -81,6 +80,7 @@ namespace LemonadeStand
         public void PurchaseIngrediants()
         {
             //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
+            // easy scaleable code  open/closed principle purpose is only to use the store
             Store store = new Store();
 
             store.SellCups(player1);
@@ -140,6 +140,7 @@ namespace LemonadeStand
       
         public void PriceChange()
         {
+            //[8:25 PM] 2.7 Select price per cup.
             Console.WriteLine("Would you like to change the price per cup of lemonade?Y/N");
             string response = Console.ReadLine().ToUpper();
             if (response == "Y")
@@ -159,7 +160,8 @@ namespace LemonadeStand
 
         public void Customers()
         {
-            
+            //[8:23 PM] 2.5 Display actual forecast for the day
+            //[8:26 PM] 2.9 Customer buy loop on a random purchase
             Console.WriteLine(day.Weather.RealConditons);
             int customersPerDay = day.NumberOfCustomersPerDay;
             int numberOfLemonadePurchaseable = player1.inventory.lemonades.Count;
@@ -174,7 +176,7 @@ namespace LemonadeStand
                 {
                     numberOfLemonadePurchaseable--;
                     player1.wallet.AcceptMoney(player1.recipe.price);
-
+                    player1.score += player1.recipe.price;
 
 
                 }
@@ -185,17 +187,50 @@ namespace LemonadeStand
         }
         public void NewBalance()
         {
+            //[8:27 PM] 2.10 Finish first day with results of sales and number of cups sold. As well as the amount made that day.
             Console.WriteLine($"You now have {player1.wallet.Money} in your wallet after todays sales.");
+            Console.WriteLine($" You have made {player1.score}$ so far keep up the good work.");
             player1.inventory.lemonades = new List<Lemonade>();
             day = new Day();
 
+        }
+        public void NewGame()
+        {
+            Console.WriteLine("Would you like to play again");
+            
+            string response = Console.ReadLine().ToUpper();
+            if (response == "Y")
+            {
+                for (int i = 0; i < 7; i++)
+                {
+
+                    DayCreation();
+                    PlayerInventory();
+                    PurchaseIngrediants();
+                    LemonadeRecipe();
+                    Pitchers();
+                    PriceChange();
+                    Customers();
+                    NewBalance();
+                }
 
 
 
+            }
+            else if (Console.ReadLine() == "N")
+            {
+                return;
+            }
+        }
+        public void Displaywinnings()
+        {
+            Console.WriteLine($" You have made a total of {player1.score}$ good job.");
         }
 
         public void RunGame()
         {
+
+            //[8:28 PM] step 3 Repeat of step 2.1-2.10 (edited)
             //[8:29 PM] step 4 Repeat of 7 times with for each loop
             WelcomeMessage();
             for (int i = 0; i < 7; i++)
@@ -210,6 +245,8 @@ namespace LemonadeStand
                 Customers();
                 NewBalance();
             }
+            NewGame();
+            Displaywinnings();
 
 
         }
