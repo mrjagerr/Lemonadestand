@@ -9,7 +9,7 @@ namespace LemonadeStand
 {
     internal  class Day
     {
-
+        
         Random random;
         private static int dayCounter=0;
         public Weather Weather = new Weather();
@@ -39,7 +39,7 @@ namespace LemonadeStand
             
         
 
-                //weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudly", "sunny and rainy" };
+                //weatherconditions = new List<string> { "mostly sunny", "mostly cloudy", "sunny", "cloudy", "rainy", "partly cloudy", "sunny and rainy" };
 
             
         public  int NumberOfCustomersPerDay

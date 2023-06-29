@@ -19,6 +19,6 @@ namespace LemonadeStand
 
             // member methods (CAN DO)
         }
-    
+    // solid principle S creation of Lemonade item
 
 }

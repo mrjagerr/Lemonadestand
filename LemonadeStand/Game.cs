@@ -22,24 +22,6 @@ namespace LemonadeStand
         
         //[8:20 PM] step2 Start first day
 
-       
-        
-       
-       
-        
-        
-        
-        
-        //[8:29 PM] //for each day do this
-
-
-
-
-
-
-
-
-
         public Game()
         {
 
@@ -64,18 +46,7 @@ namespace LemonadeStand
 
 
         }
-        
-        public void PlayerInventory()
-        {
 
-            //[8:21 PM] 2.3 Allow the player to go to the store to get ingredients (edited)
-
-            Console.WriteLine($" You currently have {player1.wallet.Money} $");
-            Console.WriteLine($" You currently have {player1.inventory.lemons.Count} lemons.");
-            Console.WriteLine($" You currently have {player1.inventory.sugarCubes.Count} sugar cubes.");
-            Console.WriteLine($" You currently have {player1.inventory.iceCubes.Count} ice cubes.");
-            Console.WriteLine($" You currently have {player1.inventory.cups.Count} cups.");
-        }
 
         public void PurchaseIngrediants()
         {
@@ -122,20 +93,33 @@ namespace LemonadeStand
             //[8:24 PM] 2.6 State the number of cups that a pitcher pours.
             int numberOfPitchers = UserInterface.GetNumberOfPitchers();
 
+            int amountOfLemonsToRemove = numberOfPitchers * player1.recipe.numberOfLemons;
+            int amountOfIceCubesToRemove = numberOfPitchers * player1.recipe.numberOfIceCubes;
+            int amountOfSugarCubesToRemove = numberOfPitchers * player1.recipe.numberOfSugarCubes;
+            int amountOfCupsToRemove = numberOfPitchers * 8;
             while (numberOfPitchers != 0)
-                
+
+            {
+                if (player1.inventory.iceCubes.Count >= amountOfIceCubesToRemove && player1.inventory.lemons.Count >= amountOfLemonsToRemove && player1.inventory.sugarCubes.Count >= amountOfSugarCubesToRemove && player1.inventory.cups.Count >= amountOfCupsToRemove)
+
                 {
                     player1.inventory.iceCubes.RemoveRange(0, player1.recipe.numberOfIceCubes);
                     player1.inventory.lemons.RemoveRange(0, player1.recipe.numberOfLemons);
-                    player1.inventory.sugarCubes.RemoveRange(0,player1.recipe.numberOfSugarCubes);
-                    player1.inventory.cups.RemoveRange(0,8);
+                    player1.inventory.sugarCubes.RemoveRange(0, player1.recipe.numberOfSugarCubes);
+                    player1.inventory.cups.RemoveRange(0, 8);
                     player1.inventory.AddLemonadeToInventory(8);
                     numberOfPitchers--;
+
                 }
-
-
+                else
+                {
+                    Console.WriteLine("You do not have enough ingrediants.");
+                    numberOfPitchers = 0;
+                    Pitchers();
+                }
+            }
             
-
+      
         }
       
         public void PriceChange()

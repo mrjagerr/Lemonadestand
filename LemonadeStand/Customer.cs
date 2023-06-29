@@ -9,7 +9,7 @@ namespace LemonadeStand
     internal class Customer
     {
 
-
+        // open/closed principle  the ability to add fuctions  to change the customers decisions  without changing the existing ones is present could add the number of sugarcubes to effect the decision/ or number of icecubes
         
         Random random = new Random();
         private int temperatureEnjoyment;
@@ -72,7 +72,7 @@ namespace LemonadeStand
        
 
         public void Purchase()
-        {
+         {
 
             if (priceOfPurchase <= recipePrice)
             {
@@ -230,7 +230,7 @@ namespace LemonadeStand
                             customerDecision = false;
                         }
                         return;
-                    case "partly cloudly":
+                    case "partly cloudy":
                         if (temperatureEnjoyment >= weather.temperature)
                         {
                             Console.WriteLine("Customer will purchase");
